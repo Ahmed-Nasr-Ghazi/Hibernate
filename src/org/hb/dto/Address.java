@@ -1,11 +1,13 @@
 package org.hb.dto;
 
+import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
 @Embeddable
 public class Address {
 
 	private String street;
+	@Column(name = "city_name")
 	private String city;
 	private String state;
 	private String pincode;

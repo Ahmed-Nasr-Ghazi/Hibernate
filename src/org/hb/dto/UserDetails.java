@@ -2,6 +2,9 @@ package org.hb.dto;
 
 import java.util.Date;
 
+import javax.persistence.AttributeOverride;
+import javax.persistence.AttributeOverrides;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -16,6 +19,9 @@ public class UserDetails {
 	@Id @GeneratedValue
 	private int userId;
 	private String userName;
+	@AttributeOverrides({
+	@AttributeOverride(name = "state", column = @Column(name = "home_state"))})
+
 	private Address address;
 	
 	@Temporal(TemporalType.TIMESTAMP)
