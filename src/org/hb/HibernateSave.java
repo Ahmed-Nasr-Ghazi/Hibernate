@@ -1,6 +1,8 @@
 package org.hb;
 
 
+import java.util.Date;
+
 import org.hb.dto.UserDetails;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -22,17 +24,15 @@ public class HibernateSave {
 		
 		try {			
 			// create a student object
-			System.out.println("Creating new student object...");
+			System.out.println("Creating new user object...");
 
 			UserDetails userDetails =  new UserDetails();
-			userDetails.setUserId(2);
 			userDetails.setUserName("Ahmed");
-			
+			userDetails.setDate(new Date());
 			// start a transaction
 			session.beginTransaction();
 			
-			// save the student object
-			System.out.println("Saving the student...");
+			// save the user object
 			session.save(userDetails);
 			
 			// commit transaction

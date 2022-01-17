@@ -3,6 +3,7 @@ package org.hb.dto;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -12,12 +13,12 @@ import javax.persistence.TemporalType;
 @Table(name = "USER_DETAILS")
 public class UserDetails {
 
-	@Id
+	@Id @GeneratedValue
 	private int userId;
 	
 	private String userName;
 	
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date date;
 	
 	public Date getDate() {

@@ -21,6 +21,10 @@
         <!-- Echo the SQL to stdout -->
         <property name="show_sql">true</property>
 
+
+        <!-- JDBC connection pool settings ... using built-in test pool -->
+        <property name="connection.pool_size">100</property>
+
 		<!-- Set the current session context -->
 		<property name="current_session_context_class">thread</property>
         
