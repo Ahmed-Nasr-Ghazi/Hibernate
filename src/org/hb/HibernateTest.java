@@ -35,22 +35,33 @@ public class HibernateTest {
 		
 
 
+		//Only one per application
 		SessionFactory factory = new Configuration()
 				.configure("hibernate.cfg.xml")
 				.addAnnotatedClass(UserDetails.class)
 				.buildSessionFactory();
 
 		// create session
-		Session session = factory.getCurrentSession();
+		Session session = factory.openSession();
 		
 		UserDetails userDetails =  new UserDetails();
-		userDetails.setUserId(5);
+		userDetails.setUserId(7);
 		userDetails.setUserName("Mohammed");
 		userDetails.setDate(new Date());
 		
 		session.beginTransaction();
 		session.save(userDetails);
 		session.getTransaction().commit();
+		session.close();
+		
+		userDetails = null;
+
+		session = factory.openSession();
+		session.beginTransaction();
+		userDetails = session.get(UserDetails.class, 1);
+		System.out.println(userDetails);
+		session.getTransaction().commit();
+		session.close();
 		
 		
 	}
