@@ -1,10 +1,13 @@
 package org.hb.dto;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -19,14 +22,20 @@ public class UserDetails {
 	@Id @GeneratedValue
 	private int userId;
 	private String userName;
-	@AttributeOverrides({
-	@AttributeOverride(name = "state", column = @Column(name = "home_state"))})
-
-	private Address address;
-	
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date date;
 	
+	@ElementCollection
+	private Set<Address> setOfAddress = new HashSet<Address>();
+	
+	
+	
+	public Set<Address> getSetOfAddress() {
+		return setOfAddress;
+	}
+	public void setSetOfAddress(Set<Address> setOfAddress) {
+		this.setOfAddress = setOfAddress;
+	}
 	public Date getDate() {
 		return date;
 	}
@@ -46,12 +55,6 @@ public class UserDetails {
 		this.userName = userName;
 	}
 	
-	public Address getAddress() {
-		return address;
-	}
-	public void setAddress(Address address) {
-		this.address = address;
-	}
 	@Override
 	public String toString() {
 		return "UserDetails [userId=" + userId + ", userName=" + userName + ", date=" + date + "]";
