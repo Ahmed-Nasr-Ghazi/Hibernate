@@ -1,5 +1,7 @@
 package org.hb.dto;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -11,9 +13,15 @@ import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import org.hibernate.annotations.CollectionId;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Type;
 
 @Entity
 @Table(name = "USER_DETAILS")
@@ -26,15 +34,19 @@ public class UserDetails {
 	private Date date;
 	
 	@ElementCollection
-	private Set<Address> setOfAddress = new HashSet<Address>();
+	@JoinTable(name="USER_ADDRESS", //change table name
+		joinColumns = @JoinColumn(name="USER_ID"))	//change column name
 	
+	@GenericGenerator(name = "sequence_gen", strategy = "sequence") //can be used anywhere in the application
+	@CollectionId(columns = { @Column(name = "Address_Id") }, generator = "sequence_gen", type = @Type(type = "long"))
+	private Collection<Address> listOfAddress = new ArrayList<Address>();
 	
-	
-	public Set<Address> getSetOfAddress() {
-		return setOfAddress;
+
+	public Collection<Address> getListOfAddress() {
+		return listOfAddress;
 	}
-	public void setSetOfAddress(Set<Address> setOfAddress) {
-		this.setOfAddress = setOfAddress;
+	public void setListOfAddress(Collection<Address> listOfAddress) {
+		this.listOfAddress = listOfAddress;
 	}
 	public Date getDate() {
 		return date;

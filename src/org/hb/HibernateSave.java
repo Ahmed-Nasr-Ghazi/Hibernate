@@ -34,7 +34,7 @@ public class HibernateSave {
 			
 			userDetails.setUserName("Nasr");
 			userDetails.setDate(new Date());
-			userDetails.setAddress(address);
+			//userDetails.setAddress(address);
 			
 			// start a transaction
 			session.beginTransaction();

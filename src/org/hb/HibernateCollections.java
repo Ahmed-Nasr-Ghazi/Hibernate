@@ -26,16 +26,16 @@ public class HibernateCollections {
 		System.out.println("Creating new user object...");
 
 		UserDetails userDetails =  new UserDetails();
-		Address address1 = new Address("el","tanta","2nd","123");
-		Address address2 = new Address("el","tanta","2nd","123");
+		Address address1 = new Address("elHelw","tanta","2nd","123");
+		Address address2 = new Address("elHelw","tanta","2nd","123");
 
 		
 		
 		
 		userDetails.setUserName("Nasr");
 		userDetails.setDate(new Date());
-		userDetails.getSetOfAddress().add(address1);
-		userDetails.getSetOfAddress().add(address2);
+		userDetails.getListOfAddress().add(address1);
+		userDetails.getListOfAddress().add(address2);
 		
 		// start a transaction
 		session.beginTransaction();
