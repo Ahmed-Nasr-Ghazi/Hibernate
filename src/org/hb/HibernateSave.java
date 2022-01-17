@@ -3,6 +3,7 @@ package org.hb;
 
 import java.util.Date;
 
+import org.hb.dto.Address;
 import org.hb.dto.UserDetails;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -27,8 +28,14 @@ public class HibernateSave {
 			System.out.println("Creating new user object...");
 
 			UserDetails userDetails =  new UserDetails();
-			userDetails.setUserName("Ahmed");
+			Address address = new Address("el","tanta","2nd","123");
+			
+			
+			
+			userDetails.setUserName("Nasr");
 			userDetails.setDate(new Date());
+			userDetails.setAddress(address);
+			
 			// start a transaction
 			session.beginTransaction();
 			

@@ -15,8 +15,8 @@ public class UserDetails {
 
 	@Id @GeneratedValue
 	private int userId;
-	
 	private String userName;
+	private Address address;
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date date;
@@ -38,6 +38,13 @@ public class UserDetails {
 	}
 	public void setUserName(String userName) {
 		this.userName = userName;
+	}
+	
+	public Address getAddress() {
+		return address;
+	}
+	public void setAddress(Address address) {
+		this.address = address;
 	}
 	@Override
 	public String toString() {
