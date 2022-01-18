@@ -25,7 +25,14 @@ public class HibernateRetrieveCollections {
 			session.close();
 			System.out.println(userDetails.getListOfAddress().size());
 */
-
+		//using eager fetch type
+		
+		session.beginTransaction();
+		UserDetails userDetails = session.get(UserDetails.class, 1);
+		System.out.println(userDetails);
+		session.close();
+		System.out.println(userDetails.getListOfAddress().size()); //there is no error after closing session
+		
 		
 	}
 }
