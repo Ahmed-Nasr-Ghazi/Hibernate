@@ -2,9 +2,10 @@ package org.hb.dto;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
 
 @Entity
 @Table (name = "Vehicle")
@@ -14,8 +15,15 @@ public class Vehicle {
 	private int vehicleId;
 	private String vehicleName;
 	
+	@ManyToOne
+	private UserDetailsCollections user;
 	
-	
+	public UserDetailsCollections getUser() {
+		return user;
+	}
+	public void setUser(UserDetailsCollections user) {
+		this.user = user;
+	}
 	public int getVehicleId() {
 		return vehicleId;
 	}

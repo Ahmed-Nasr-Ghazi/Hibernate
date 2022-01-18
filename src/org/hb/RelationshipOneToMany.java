@@ -31,9 +31,15 @@ public class RelationshipOneToMany {
 			Vehicle userVehicle2 = new Vehicle();
 			userVehicle2.setVehicleName("Honda");
 			
+			//uni direction relation
 			userDetails.getVehicleSet().add(userVehicle);
 			userDetails.getVehicleSet().add(userVehicle2);
 
+			//bi-directional relation
+			userVehicle.setUser(userDetails);
+			userVehicle2.setUser(userDetails);
+
+			//begin transactions
 			session.beginTransaction();
 			session.save(userDetails);
 			session.save(userVehicle);
