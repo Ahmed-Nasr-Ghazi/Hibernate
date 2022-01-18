@@ -46,6 +46,10 @@ public class Address {
 	public Address() {
 
 	}
+	@Override
+	public String toString() {
+		return "Address [street=" + street + ", city=" + city + ", state=" + state + ", pincode=" + pincode + "]";
+	}
 	
 	
 

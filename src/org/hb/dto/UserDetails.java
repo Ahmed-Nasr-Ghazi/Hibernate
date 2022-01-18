@@ -38,7 +38,12 @@ public class UserDetails {
 		joinColumns = @JoinColumn(name="USER_ID"))	//change column name
 	
 	@GenericGenerator(name = "sequence_gen", strategy = "sequence") //can be used anywhere in the application
-	@CollectionId(columns = { @Column(name = "Address_Id") }, generator = "sequence_gen", type = @Type(type = "long"))
+	@CollectionId(columns = { @Column(name = "Address_Id") }, generator = "sequence_gen", type = @Type(type = "long")) 
+	/*
+	 * @CollectionId provided by hibernate not JPA
+	 * to add an id column to a collection 
+	 * define it's name, generation type and data type
+	 * */
 	private Collection<Address> listOfAddress = new ArrayList<Address>();
 	
 
