@@ -36,10 +36,12 @@
         
        <mapping class="org.hb.dto.UserDetails"/>
        <mapping class="org.hb.dto.UserDetailsCollections"/>
-       <mapping class="org.hb.dto.UserDetailsSimple"/>       
+       <mapping class="org.hb.dto.UserDetailsSimple"/>    
+       <mapping class="org.hb.dto.UserDetailsCollectionsM2M"/>   
        
        <mapping class="org.hb.dto.Vehicle"/>
-       
+       <mapping class="org.hb.dto.RentalVehicle"/>
+
  
     </session-factory>
 
