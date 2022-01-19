@@ -29,10 +29,9 @@ public class UserDetailsCollections {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date date;
 	
-	@JoinTable (name = "user_details_collections_vehicle",
-			joinColumns = @JoinColumn(name = "USER_ID"),
-			inverseJoinColumns = @JoinColumn(name = "VEHICLE_ID"))
-	@OneToMany(cascade = CascadeType.ALL)
+
+	
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
 	private Collection<Vehicle> vehicleSet = new ArrayList<Vehicle>();
 	
 	
