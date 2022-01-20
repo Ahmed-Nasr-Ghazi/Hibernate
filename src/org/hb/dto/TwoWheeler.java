@@ -3,9 +3,10 @@ package org.hb.dto;
 import javax.persistence.Entity;
 
 @Entity
-public class TwoWheeler {
+public class TwoWheeler extends VehicleInheritance {
 
 	private String SteeringHandle;
+
 
 	public String getSteeringHandle() {
 		return SteeringHandle;
