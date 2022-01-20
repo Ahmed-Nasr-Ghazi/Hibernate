@@ -17,10 +17,6 @@ public class VehicleInheritance {
 	private int vehicleId;
 	private String vehicleName;
 	
-	@ManyToOne(cascade = CascadeType.MERGE)
-	@JoinColumn(name = "USER_ID")
-	private UserDetailsCollections user;
-	
 	public UserDetailsCollections getUser() {
 		return user;
 	}
