@@ -17,12 +17,6 @@ public class VehicleInheritance {
 	private int vehicleId;
 	private String vehicleName;
 	
-	public UserDetailsCollections getUser() {
-		return user;
-	}
-	public void setUser(UserDetailsCollections user) {
-		this.user = user;
-	}
 	public int getVehicleId() {
 		return vehicleId;
 	}
