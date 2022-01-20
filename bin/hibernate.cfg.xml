@@ -32,7 +32,7 @@
 
          <property name="show_sql">true</property>
        
-         <property name="hbm2ddl.auto">create</property>
+         <property name="hbm2ddl.auto">update</property>
         
        <mapping class="org.hb.dto.UserDetails"/>
        <mapping class="org.hb.dto.UserDetailsCollections"/>
@@ -40,6 +40,7 @@
        <mapping class="org.hb.dto.UserDetailsCollectionsM2M"/>   
        
        <mapping class="org.hb.dto.Vehicle"/>
+       <mapping class="org.hb.dto.VehicleInheritance"/>
        <mapping class="org.hb.dto.RentalVehicle"/>
 
  

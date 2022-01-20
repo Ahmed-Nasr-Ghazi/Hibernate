@@ -44,8 +44,7 @@ public class RelationshipManyToMany {
 			//begin transactions
 			session.beginTransaction();
 			session.save(userDetails);
-			session.save(userVehicle);
-			session.save(userVehicle2);
+
 			
 			session.getTransaction().commit();
 			
