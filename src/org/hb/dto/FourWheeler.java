@@ -4,7 +4,7 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
 @Entity
-@DiscriminatorValue(value = "Car") //instade of mentioning class name in DTYPE column 
+//@DiscriminatorValue(value = "Car") //instade of mentioning class name in DTYPE column 
 public class FourWheeler extends VehicleInheritance{
 
 	private String SteeringWheel;

@@ -15,10 +15,13 @@ import javax.persistence.Table;
 
 @Entity
 @Table (name = "Vehicle_Inheritance")
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+/*
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(
-		name = "Vehicle_Type",
-		discriminatorType = DiscriminatorType.STRING)
+		name = "Vehicle_Type", //table name
+		discriminatorType = DiscriminatorType.STRING) //discriminator column type
+*/
 public class VehicleInheritance {
 
 	@Id @GeneratedValue
