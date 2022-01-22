@@ -47,12 +47,21 @@ public class HibernateCRUD {
 					session.getTransaction().commit();
 					*/
 					
+					
 					//Update
+					/*
 					userGet = session.get(UserDetailsSimple.class, 3);
 					userGet.setUserName("Updated");
 					session.update(userGet);
 					
 					session.getTransaction().commit();
+					*/
+					
+					//transiant object
+					UserDetailsSimple user = new UserDetailsSimple();
+					user.setDate(new Date());
+					user.setUserName("User 0");
+					
 					
 				}
 				finally {
