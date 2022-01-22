@@ -68,10 +68,13 @@ public class HibernateCRUD {
 					user.setUserName("User updated value"); //we are not using session.update but it will be reflected into DB
 					
 					session.getTransaction().commit();
+					session.close(); // detached object
+					user.setUserName("User updated value"); // will not be persisted 
+					
 					
 				}
 				finally {
-					session.close(); 
+					session.close(); // detached object
 				}
 		
 	}
