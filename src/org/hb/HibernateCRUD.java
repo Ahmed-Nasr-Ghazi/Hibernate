@@ -45,7 +45,7 @@ public class HibernateCRUD {
 					userGet = session.get(UserDetailsSimple.class, 3);
 					session.delete(userGet);
 					session.getTransaction().commit();
-					*/
+			 		*/
 					
 					
 					//Update
@@ -60,8 +60,14 @@ public class HibernateCRUD {
 					//transiant object
 					UserDetailsSimple user = new UserDetailsSimple();
 					user.setDate(new Date());
-					user.setUserName("User 0");
+					user.setUserName("User 0"); // Transiant object
 					
+					session.save(user);
+					
+					
+					user.setUserName("User updated value"); //we are not using session.update but it will be reflected into DB
+					
+					session.getTransaction().commit();
 					
 				}
 				finally {
