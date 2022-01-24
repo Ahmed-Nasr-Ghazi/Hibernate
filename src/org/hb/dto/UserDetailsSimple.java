@@ -16,6 +16,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
+@org.hibernate.annotations.Entity(selectBeforeUpdate = true)
 @Table(name = "USER_DETAILS_SIMPLE")
 public class UserDetailsSimple {
 	

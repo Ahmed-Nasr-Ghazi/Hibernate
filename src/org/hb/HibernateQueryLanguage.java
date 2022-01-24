@@ -35,9 +35,7 @@ public class HibernateQueryLanguage {
 				session = factory.getCurrentSession();
 				session.beginTransaction();
 				UserDetailsSimple userGet = session.get(UserDetailsSimple.class, 1);
-				userGet.setUserName("Updated User Name");
 				session.update(userGet);
-				userGet.setUserName("CHANGE AFTER UPDATE");
 				session.getTransaction().commit();
 
 				session.close(); // detached object
