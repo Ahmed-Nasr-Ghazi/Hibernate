@@ -70,6 +70,7 @@ public class HibernateCRUD {
 					session.getTransaction().commit();
 					session.close(); // detached object
 					
+					
 					user.setUserName("User updated value"); // will not be persisted 
 					
 					
