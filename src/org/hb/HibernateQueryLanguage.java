@@ -6,6 +6,7 @@ import org.hb.dto.UserDetailsSimple;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.query.Query;
 
 public class HibernateQueryLanguage {
 
@@ -22,26 +23,18 @@ public class HibernateQueryLanguage {
 				try {	
 					
 					session.beginTransaction();
-					UserDetailsSimple userGet = session.get(UserDetailsSimple.class, 1);
+
+					Query query = session.createQuery("from UserDetailsSimple");
+					query.list();
+					
 					session.getTransaction().commit();
-					System.out.println(userGet);
+	 
 
 					
 				}
 				finally {
-					session.close(); // detached object
-				}
-				
-				session = factory.getCurrentSession();
-				session.beginTransaction();
-				UserDetailsSimple userGet = session.get(UserDetailsSimple.class, 1);
-				session.update(userGet);
-				userGet.setUserName("NEW");
-				session.getTransaction().commit();
-
-				session.close(); // detached object
-
-		
+					session.close();
+				}		
 	}
 
 }
