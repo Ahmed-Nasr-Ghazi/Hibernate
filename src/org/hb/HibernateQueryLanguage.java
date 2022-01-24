@@ -36,6 +36,7 @@ public class HibernateQueryLanguage {
 				session.beginTransaction();
 				UserDetailsSimple userGet = session.get(UserDetailsSimple.class, 1);
 				session.update(userGet);
+				userGet.setUserName("NEW");
 				session.getTransaction().commit();
 
 				session.close(); // detached object
