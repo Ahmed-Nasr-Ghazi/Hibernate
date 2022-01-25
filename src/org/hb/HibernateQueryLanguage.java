@@ -26,7 +26,7 @@ public class HibernateQueryLanguage {
 
 					Query query = session.createQuery("delete from UserDetailsSimple where userId =: id");
 					query.setParameter("id", 1);
-					
+					query.executeUpdate();
 					session.getTransaction().commit();
 	 
 
