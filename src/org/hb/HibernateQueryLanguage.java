@@ -50,8 +50,9 @@ public class HibernateQueryLanguage {
 					session = factory.getCurrentSession();
 					session.beginTransaction();
 					
-					String value = "0";
-					query = session.createQuery("from UserDetailsSimple where userId >" + value);
+					String value = "1";
+					query = session.createQuery("from UserDetailsSimple where userId > ?1");
+					query.setInteger(1, Integer.parseInt(value));
 					list = query.list(); //first level will be list
 					System.out.println(list);
 					session.getTransaction().commit();
