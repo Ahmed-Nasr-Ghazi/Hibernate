@@ -1,7 +1,9 @@
 package org.hb;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.hb.dto.UserDetailsSimple;
 import org.hibernate.Session;
@@ -25,17 +27,36 @@ public class HibernateQueryLanguage {
 										
 					session.beginTransaction();
 					
-					Query query = session.createQuery("from UserDetailsSimple");
+					Query<UserDetailsSimple> query = session.createQuery("from UserDetailsSimple");
 					query.setFirstResult(4);
 					
-					List<UserDetailsSimple> list = query.list();
-					System.out.println(list);
-					query = session.createQuery("select userName from UserDetailsSimple");
+					List<UserDetailsSimple> list = query.list(); //it hits the db
+					//System.out.println(list);
+					query = session.createQuery("select new map(userId, userName) from UserDetailsSimple");
 
 					
-					list = query.list();
+					list = query.list(); //first level will be list
+					//System.out.println(list);
+					for(int i = 0; i < list.size(); i++) {
+						Map<Integer, String> map = (Map<Integer, String>)list.get(i);
+						//System.out.println(map);
+						
+						//System.out.println(list.get(i));
+					}
+					session.getTransaction().commit();
+					
+					////////////*///////////
+					
+					session = factory.getCurrentSession();
+					session.beginTransaction();
+					
+					String value = "0";
+					query = session.createQuery("from UserDetailsSimple where userId >" + value);
+					list = query.list(); //first level will be list
 					System.out.println(list);
 					session.getTransaction().commit();
+
+					
 					
 				}
 				
