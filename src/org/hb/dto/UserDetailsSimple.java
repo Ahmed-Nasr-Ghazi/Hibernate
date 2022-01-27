@@ -22,6 +22,7 @@ public class UserDetailsSimple {
 	
 	@Id
 	@GeneratedValue
+	@JoinColumn(name="User_ID")
 	private int userId;
 	private String userName;
 	@Temporal(TemporalType.TIMESTAMP)
@@ -78,5 +79,4 @@ public class UserDetailsSimple {
 	
 	
 	
-
 }

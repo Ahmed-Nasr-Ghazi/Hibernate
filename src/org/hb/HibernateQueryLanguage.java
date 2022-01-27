@@ -1,6 +1,7 @@
 package org.hb;
 
 import java.util.Date;
+import java.util.List;
 
 import org.hb.dto.UserDetailsSimple;
 import org.hibernate.Session;
@@ -21,17 +22,23 @@ public class HibernateQueryLanguage {
 				Session session = factory.getCurrentSession();
 				
 				try {	
-					
+										
 					session.beginTransaction();
+					
+					Query query = session.createQuery("from UserDetailsSimple");
+					query.setFirstResult(4);
+					
+					List<UserDetailsSimple> list = query.list();
+					System.out.println(list);
+					query = session.createQuery("select userName from UserDetailsSimple");
 
-					Query query = session.createQuery("delete from UserDetailsSimple where userId =: id");
-					query.setParameter("id", 1);
-					query.executeUpdate();
+					
+					list = query.list();
+					System.out.println(list);
 					session.getTransaction().commit();
-	 
-
 					
 				}
+				
 				finally {
 					session.close();
 				}		
