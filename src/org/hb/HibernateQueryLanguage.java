@@ -49,7 +49,7 @@ public class HibernateQueryLanguage {
 					
 					session = factory.getCurrentSession();
 					session.beginTransaction();
-					
+					/*
 					String value = "1";
 					query = session.createQuery("from UserDetailsSimple where userId > :value");
 					query.setParameter("value", Integer.parseInt(value));
@@ -67,7 +67,14 @@ public class HibernateQueryLanguage {
 					query.setParameter("value", Integer.parseInt(value));
 					list = query.list(); //first level will be list
 					System.out.println(list);
+					*/
+					// named native query
 					
+					String name = "User 1";
+					query = session.getNamedNativeQuery("UserDetailsSimple.byName");
+					query.setParameter("name", name);
+					list = query.list(); //first level will be list
+					System.out.println(list);
 					
 					session.getTransaction().commit();
 
