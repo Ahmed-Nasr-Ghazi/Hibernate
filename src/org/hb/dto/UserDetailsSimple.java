@@ -10,12 +10,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
+@NamedQuery(name = "UserDetailsSimple.byId", query = "from UserDetailsSimple where userId = :value")
 @org.hibernate.annotations.Entity(selectBeforeUpdate = true)
 @Table(name = "USER_DETAILS_SIMPLE")
 public class UserDetailsSimple {

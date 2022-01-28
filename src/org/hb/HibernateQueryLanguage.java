@@ -52,11 +52,27 @@ public class HibernateQueryLanguage {
 					
 					String value = "1";
 					query = session.createQuery("from UserDetailsSimple where userId > :value");
-					query.setInteger("value", Integer.parseInt(value));
+					query.setParameter("value", Integer.parseInt(value));
 					list = query.list(); //first level will be list
 					System.out.println(list);
+					
+					value = "2";
+					
+					query = session.createQuery("from UserDetailsSimple where userId = ?1");
+					query.setParameter(1, Integer.parseInt(value));
+					list = query.list(); //first level will be list
+					System.out.println(list);
+
+					query = session.getNamedQuery("UserDetailsSimple.byId");
+					query.setParameter("value", Integer.parseInt(value));
+					list = query.list(); //first level will be list
+					System.out.println(list);
+					
+					
 					session.getTransaction().commit();
 
+					
+					
 					
 					
 				}
