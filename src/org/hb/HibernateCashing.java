@@ -22,18 +22,13 @@ public class HibernateCashing {
 			session.beginTransaction();
 
 			UserDetailsSimple userDetailsSimple = session.get(UserDetailsSimple.class, 1);
-			
-
-			
-			System.out.println(userDetailsSimple );
-			
+						
 			session.getTransaction().commit();
 			
 			session = factory.getCurrentSession();
 			session.beginTransaction();
 
 			UserDetailsSimple userDetailsSimple2 = session.get(UserDetailsSimple.class, 1);
-			System.out.println(userDetailsSimple );
 
 			
 		}finally {

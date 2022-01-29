@@ -27,8 +27,14 @@
 
 		<!-- Set the current session context -->
 		<property name="current_session_context_class">thread</property>
-        
-         <property name="cache.provider_class">org.hibernate.cache.NoCacheProvider</property>
+        		
+        		
+        <!-- Disable Second level Cache -->
+         <property name="cache.use_second_level_cache">true</property>
+         <property name="cache.provider_class">org.hibernate.cache.EhCacheProvider</property> <!--class of cache provider -->
+		<!--  <property name="hibernate.cache.use_second_level_cache">true</property> -->
+		 <property name="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.SingletonEhCacheRegionFactory</property>
+<property name="hibernate.cache.use_query_cache">false</property>
 
          <property name="show_sql">true</property>
        
@@ -45,5 +51,7 @@
 
  
     </session-factory>
+    
 
 </hibernate-configuration>
+

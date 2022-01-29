@@ -2,6 +2,7 @@ package org.hb.dto;
 
 import java.util.Date;
 
+import javax.persistence.Cacheable;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,6 +18,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 import org.hibernate.annotations.FetchProfile.FetchOverride;
@@ -26,6 +29,8 @@ import org.hibernate.annotations.FetchProfile.FetchOverride;
 @NamedNativeQuery(name = "UserDetailsSimple.byName", query = "select * from user_details_simple where userName = :name", resultClass = UserDetailsSimple.class)
 @org.hibernate.annotations.Entity(selectBeforeUpdate = true)
 @Table(name = "USER_DETAILS_SIMPLE")
+@Cacheable
+@Cache(usage = CacheConcurrencyStrategy.READ_ONLY)
 public class UserDetailsSimple {
 	
 	@Id
