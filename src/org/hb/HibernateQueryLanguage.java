@@ -5,10 +5,17 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
+
 import org.hb.dto.UserDetailsSimple;
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.criterion.Example;
+import org.hibernate.criterion.Restrictions;
 import org.hibernate.query.Query;
 
 public class HibernateQueryLanguage {
@@ -75,6 +82,29 @@ public class HibernateQueryLanguage {
 					query.setParameter("name", name);
 					list = query.list(); //first level will be list
 					System.out.println(list);
+					
+					Criteria criteria = session.createCriteria(UserDetailsSimple.class); //criteria for an entity // its deprecated
+					criteria.add(Restrictions.eq("userName", "user 1"))
+							.add(Restrictions.gt("userId", 5));
+					
+					
+					UserDetailsSimple testUser = new UserDetailsSimple();
+					
+					Example example = Example.create(testUser).enableLike();
+					
+					criteria = session.createCriteria(UserDetailsSimple.class)
+							.add(example);   //criteria for an entity // its deprecated
+
+					
+					
+					
+					list = criteria.list();
+					System.out.println(list);
+					/*
+					CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
+					CriteriaQuery<UserDetailsSimple> criteriaQuery = criteriaBuilder.createQuery(UserDetailsSimple.class);
+					*/
+					
 					
 					session.getTransaction().commit();
 

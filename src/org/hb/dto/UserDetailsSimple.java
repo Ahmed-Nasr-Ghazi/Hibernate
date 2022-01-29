@@ -17,6 +17,10 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+import org.hibernate.annotations.FetchProfile.FetchOverride;
+
 @Entity
 @NamedQuery(name = "UserDetailsSimple.byId", query = "from UserDetailsSimple where userId = :value")
 @NamedNativeQuery(name = "UserDetailsSimple.byName", query = "select * from user_details_simple where userName = :name", resultClass = UserDetailsSimple.class)
@@ -35,6 +39,7 @@ public class UserDetailsSimple {
 	
 	@JoinColumn(name="VEHICLE_ID")
 	@OneToOne(cascade=CascadeType.ALL)
+	//@Fetch(FetchMode.)
 	private Vehicle vehicle;
 	
 	
